@@ -2,15 +2,12 @@ import React from "react";
 import MyFooter from "./components/Footer";
 import MyHeader from "./components/header";
 import Hello from "./components/Hello";
+import Course from "./components/course";
 
 function App() {
-  const name = "Kieu Oanh";
-  const getName = () => {
-    return name;
-  };
   return (
     <>
-      <Hello getName={getName} />
+      <Course />
     </>
   );
 }
