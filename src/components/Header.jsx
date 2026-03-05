@@ -1,6 +1,9 @@
 function MyHeader() {
-    return (
-        <div>My header</div> 
-    )  
+  return (
+    <>
+      <div>My header</div>
+      <p>My header</p>
+    </>
+  );
 }
-export default MyHeader
+export default MyHeader;
