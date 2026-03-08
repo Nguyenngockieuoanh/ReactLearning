@@ -5,30 +5,33 @@ import Category from "./components/Category";
 import Message from "./components/Message";
 
 function App() {
-  const colors = ["#FF0", "#00F", "#F0F"];
+  const [chosenProducrt, setChosenProduct] = useState(1);
+  const product = [
+    { id: 1, name: "Iphone 11" },
+    { id: 2, name: "Iphone 12" },
+    { id: 3, name: "Iphone 13" },
+  ];
 
-  const [color, setcolor] = useState("#FF0");
-
-  const handleChangeColor = (index) => {
-    console.log(index);
-    setcolor(colors[index]);
+  const handleCheckValue = (id) => {
+    setChosenProduct(id);
+    console.log(id);
   };
-
   return (
     <div>
-      <div
-        style={{
-          background: color,
-          margin: "20px",
-          width: "70px",
-          height: "20px",
-        }}
-      ></div>
-
       <div>
-        <button onClick={() => handleChangeColor(0)}>Red</button>
-        <button onClick={() => handleChangeColor(1)}>Blue</button>
-        <button onClick={() => handleChangeColor(2)}>Pink</button>
+        {product.map((product, index) => {
+          return (
+            <div key={index}>
+              <label>{product.name}</label>
+              <input
+                type="radio"
+                value={product.id}
+                onChange={(e) => handleCheckValue(e.target.value)}
+                checked={+chosenProducrt === product.id}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
