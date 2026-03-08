@@ -5,20 +5,32 @@ import Category from "./components/Category";
 import Message from "./components/Message";
 
 function App() {
-  const [count, setcount] = useState(() => {
-    const number = 1 + 1 + 1;
-    return number;
-  });
-  console.log("sss");
-  const handleClick = () => {
-    setcount((prev) => prev + 1);
+  const colors = ["#FF0", "#00F", "#F0F"];
+
+  const [color, setcolor] = useState("#FF0");
+
+  const handleChangeColor = (index) => {
+    console.log(index);
+    setcolor(colors[index]);
   };
 
   return (
-    <>
-      <div>count : {count}</div>
-      <button onClick={handleClick}>Click here</button>
-    </>
+    <div>
+      <div
+        style={{
+          background: color,
+          margin: "20px",
+          width: "70px",
+          height: "20px",
+        }}
+      ></div>
+
+      <div>
+        <button onClick={() => handleChangeColor(0)}>Red</button>
+        <button onClick={() => handleChangeColor(1)}>Blue</button>
+        <button onClick={() => handleChangeColor(2)}>Pink</button>
+      </div>
+    </div>
   );
 }
 
