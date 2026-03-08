@@ -4,20 +4,8 @@ import Category from "./components/Category";
 import NotCategory from "./components/NotCategory";
 
 function App() {
-  const isRenderCategory = false;
-  if (isRenderCategory) {
-    return (
-      <div>
-        <Category />
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <NotCategory />
-      </div>
-    );
-  }
+  const isCategory = true;
+  return <div>{isCategory ? <Category /> : <NotCategory />}</div>;
 }
 
 export default App;
