@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Products from "./components/Products";
 import Category from "./components/Category";
 
 import Message from "./components/Message";
 
 function App() {
-  const [chosenProducrt, setChosenProduct] = useState(1);
+  const [chosenProducrt, setChosenProduct] = useState([]);
+
   const product = [
     { id: 1, name: "Iphone 11" },
     { id: 2, name: "Iphone 12" },
@@ -13,9 +14,18 @@ function App() {
   ];
 
   const handleCheckValue = (id) => {
-    setChosenProduct(id);
-    console.log(id);
+    setChosenProduct((prev) => {
+      if (prev.includes(+id)) {
+        return prev.filter((item) => item !== +id);
+      }
+      return [...prev, +id];
+    });
   };
+
+  useEffect(() => {
+    console.log(chosenProducrt);
+  }, [chosenProducrt]);
+
   return (
     <div>
       <div>
@@ -24,10 +34,10 @@ function App() {
             <div key={index}>
               <label>{product.name}</label>
               <input
-                type="radio"
+                type="checkbox"
                 value={product.id}
                 onChange={(e) => handleCheckValue(e.target.value)}
-                checked={+chosenProducrt === product.id}
+                checked={chosenProducrt.includes(product.id)}
               />
             </div>
           );
